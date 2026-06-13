@@ -1,0 +1,9 @@
+split,baseline,mean_success_diff_vs_contract,paired_t_approx,normal_approx_p,seeds
+combined_gap,random_push,0.4000,8.2329,0.0000,5
+combined_gap,source_sim_mpc,-0.0167,-1.0000,0.3173,5
+combined_gap,domain_randomized_mpc,0.0000,0.0002,0.9998,5
+combined_gap,ensemble_uncertainty_mpc,0.0500,0.6882,0.4913,5
+combined_gap,system_id_probe_mpc,0.0000,0.0003,0.9998,5
+combined_gap,residual_adaptation_mpc,-0.1833,-3.7732,0.0002,5
+combined_gap,conformal_transfer_filter,-0.0667,-2.1381,0.0325,5
+combined_gap,oracle_target_mpc,-0.5000,-18.9813,0.0000,5

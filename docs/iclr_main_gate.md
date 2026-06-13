@@ -6,14 +6,14 @@ Existing v2 decision: KILL_ARCHIVE
 
 Gate verdict: KILL_ARCHIVE
 
-Evidence digest: 6b962ee06a592094
+Evidence digest: d29f770cdb84406c
 
 Fatal blockers:
-- Synthetic-only evidence.
-- Template-generated experiment and writing.
-- No real robot or high-fidelity benchmark.
+- Contract planner is below residual adaptation and conformal filtering on combined reality gap.
+- Contract planner achieves zero false accepts mostly by accepting almost no transfers.
+- Scalar residual and several contract-removal ablations match or beat the full contract mechanism.
+- No real-robot validation or public benchmark replication.
 - No trained WAM/model checkpoint.
-- No implemented real baselines.
 - No manual exhaustive related-work synthesis.
 
-The only honest main-conference-safe decision is to archive rather than overclaim.
+Real high-fidelity evidence now exists, but it supports archive rather than submission.

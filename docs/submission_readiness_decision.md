@@ -4,8 +4,8 @@ Decision: KILL_ARCHIVE
 
 ICLR main-conference readiness: NO.
 
-Reason: The strongest locally available evidence is synthetic and template-generated. The paper lacks real-robot or high-fidelity simulator validation, implemented learned baselines, manual full-paper related-work depth, and paper-specific empirical figures. These are not recoverable without new external experiments or a substantially new research project.
+Reason: v4 adds a real MuJoCo source-to-target transfer benchmark, but the evidence is negative. The mechanism contract planner is matched or beaten by residual adaptation, conformal filtering, and scalar residual ablations. Its false-accept reduction is achieved by rejecting almost all transfers rather than by enabling robust transfer.
 
 Honest terminal action: archive/kill for ICLR main. Do not submit this paper to ICLR main in its current form.
 
-Revival condition: rebuild as a real empirical robotics paper with implemented model, strong real baselines, manual related work, and deployment evidence.
+Revival condition: invent and test a substantially different action-conditioned contract mechanism that improves transfer success and false-accept rate without trivial rejection, validated on hardware or public high-fidelity sim-to-real benchmarks.

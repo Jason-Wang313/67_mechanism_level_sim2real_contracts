@@ -1,16 +1,44 @@
-Submission-hardening experiment for paper 67 mechanism_level_sim2real_contracts
-Seven seeds, 600 episodes per seed, strong baselines, ablations, stress sweep, and negative cases.
-observed_only_behavior_clone hidden_mode_shift mean_success=0.4121 ci95=0.0122 tail=0.5879
-observed_only_behavior_clone combined_stress mean_success=0.3343 ci95=0.0109 tail=0.6657
-data_augmentation_wam hidden_mode_shift mean_success=0.4919 ci95=0.0175 tail=0.5081
-data_augmentation_wam combined_stress mean_success=0.4255 ci95=0.0112 tail=0.5745
-scalar_uncertainty_planner hidden_mode_shift mean_success=0.5507 ci95=0.0164 tail=0.4493
-scalar_uncertainty_planner combined_stress mean_success=0.4993 ci95=0.0129 tail=0.5007
-ensemble_disagreement_planner hidden_mode_shift mean_success=0.5883 ci95=0.0162 tail=0.4117
-ensemble_disagreement_planner combined_stress mean_success=0.5512 ci95=0.0186 tail=0.4488
-conformal_risk_filter hidden_mode_shift mean_success=0.6224 ci95=0.0159 tail=0.3776
-conformal_risk_filter combined_stress mean_success=0.5736 ci95=0.0113 tail=0.4264
-proposed_branch_mechanism hidden_mode_shift mean_success=0.6905 ci95=0.0130 tail=0.3095
-proposed_branch_mechanism combined_stress mean_success=0.6622 ci95=0.0116 tail=0.3378
-oracle_branch_upper_bound hidden_mode_shift mean_success=0.7624 ci95=0.0179 tail=0.2376
-oracle_branch_upper_bound combined_stress mean_success=0.7431 ci95=0.0145 tail=0.2569
+Paper 67 real MuJoCo mechanism-level sim2real contracts rebuild
+Seeds: [0, 1, 2, 3, 4]; episodes per seed: 12; workers: 4
+Main rows: 3780; ablation rows: 420; stress rows: 960
+Terminal decision: KILL_ARCHIVE
+Terminal reason: scalar residual ablation matches the full contract mechanism
+
+Combined-gap main results:
+- random_push: success=0.1000 ci95=0.0766 error=0.1574 energy=0.4327 false_accept=0.9000 accept=1.0000
+- source_sim_mpc: success=0.5167 ci95=0.1275 error=0.0943 energy=0.5322 false_accept=0.4833 accept=1.0000
+- domain_randomized_mpc: success=0.5000 ci95=0.1276 error=0.1000 energy=0.5306 false_accept=0.5000 accept=1.0000
+- ensemble_uncertainty_mpc: success=0.4500 ci95=0.1269 error=0.1019 energy=0.5137 false_accept=0.5500 accept=1.0000
+- system_id_probe_mpc: success=0.5000 ci95=0.1276 error=0.0908 energy=0.5651 false_accept=0.5000 accept=1.0000
+- residual_adaptation_mpc: success=0.6833 ci95=0.1187 error=0.0710 energy=0.5313 false_accept=0.3167 accept=1.0000
+- conformal_transfer_filter: success=0.5667 ci95=0.1264 error=0.0925 energy=0.5198 false_accept=0.2167 accept=0.4333
+- mechanism_contract_mpc: success=0.5000 ci95=0.1276 error=0.0871 energy=0.5385 false_accept=0.0000 accept=0.0167
+- oracle_target_mpc: success=1.0000 ci95=0.0000 error=0.0056 energy=0.6035 false_accept=0.0000 accept=1.0000
+
+Combined-gap ablations:
+- full_mechanism_contract_mpc: success=0.4833 ci95=0.1275 false_accept=0.0333 accept=0.0333
+- no_actuator_lag_contract: success=0.5667 ci95=0.1264 false_accept=0.0333 accept=0.0667
+- no_contact_onset_contract: success=0.5667 ci95=0.1264 false_accept=0.2333 accept=0.4167
+- no_energy_contract: success=0.5500 ci95=0.1269 false_accept=0.0333 accept=0.0667
+- no_force_slope_contract: success=0.4333 ci95=0.1264 false_accept=0.0500 accept=0.0833
+- no_slip_contract: success=0.6000 ci95=0.1250 false_accept=0.0167 accept=0.0833
+- scalar_residual_only: success=0.6500 ci95=0.1217 false_accept=0.3500 accept=0.9667
+
+Contract diagnostics:
+- nominal_target: corr=0.0000 balanced_detection=1.0000 mean_score=0.4561
+- high_friction: corr=0.0000 balanced_detection=0.9861 mean_score=0.5014
+- low_friction: corr=0.0000 balanced_detection=1.0000 mean_score=0.4186
+- mass_compliance: corr=0.0000 balanced_detection=0.9896 mean_score=0.6416
+- actuator_lag: corr=-0.3647 balanced_detection=1.0000 mean_score=0.6191
+- sensor_bias: corr=-0.4820 balanced_detection=0.9561 mean_score=2.5112
+- combined_gap: corr=-0.1923 balanced_detection=0.9661 mean_score=2.7648
+
+Pairwise combined-gap comparisons vs mechanism_contract_mpc:
+- random_push: diff=0.4000 t=8.2329 p=0.0000
+- source_sim_mpc: diff=-0.0167 t=-1.0000 p=0.3173
+- domain_randomized_mpc: diff=0.0000 t=0.0002 p=0.9998
+- ensemble_uncertainty_mpc: diff=0.0500 t=0.6882 p=0.4913
+- system_id_probe_mpc: diff=0.0000 t=0.0003 p=0.9998
+- residual_adaptation_mpc: diff=-0.1833 t=-3.7732 p=0.0002
+- conformal_transfer_filter: diff=-0.0667 t=-2.1381 p=0.0325
+- oracle_target_mpc: diff=-0.5000 t=-18.9813 p=0.0000

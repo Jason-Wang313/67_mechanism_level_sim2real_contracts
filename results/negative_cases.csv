@@ -1,4 +1,4 @@
-case,expected_behavior,observed_success,lesson
-unmodeled_hardware_damage,planner abstains or requests human inspection,0.18,branch semantics cannot repair missing actuation
-semantic_goal_ambiguity,diagnostic physical probes do not solve language ambiguity,0.31,needs a separate instruction-grounding loop
-adversarial_sensor_dropout,tail-risk objective becomes conservative,0.39,sensor-health modeling is out of scope
+case,expected_behavior,observed_failure_mode,submission_implication
+unmodeled_object_geometry,mechanism contracts should flag contact-onset mismatch,"onset contracts help, but box-only simulation cannot represent curved or articulated contact geometry",needs geometry-diverse public benchmark or hardware validation
+adversarial_probe_compliance,force-slope and energy contracts should reject transfer,a compliant probe can mimic nominal energy while final push fails under larger load,"contracts must be action-conditioned, not probe-only"
+semantic_target_mismatch,mechanism contracts should remain silent,all physical contracts can pass while the robot pursues the wrong target,"scope is physical transfer only, not task grounding"
