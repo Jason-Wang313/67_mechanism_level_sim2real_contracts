@@ -2,21 +2,25 @@
 
         Paper: 67 Mechanism-Level Sim2Real Contracts
 
-        ## Strongest Prior-Work Threats
+        ## Strongest Technical Threats
         - Robust Visual Sim-to-Real Transfer for Robotic Manipulation (2023)
 - In-Hand Manipulation of Articulated Tools with Dexterous Robot Hands with Sim-to-Real Transfer (2025)
 - Bi-Touch: Bimanual Tactile Manipulation with Sim-to-Real Deep Reinforcement Learning (2023)
 - Zero-shot sim-to-real transfer of reinforcement learning framework for robotics manipulation with demonstration and force feedback (2023)
-- SymBridge: Bilateral-Symmetry-Aware Vision-Language-Action Learning with Head-Mounted Display Teleoperation for Sim2Real Transfer in Bimanual Manipulation ()
+- SymBridge: Bilateral-Symmetry-Aware Vision-Language-Action Learning with Head-Mounted Display Teleoperation for Sim2Real Transfer in Bimanual Manipulation (n.d.)
 - ExoGS: A 4D Real-to-Sim-to-Real Framework for Scalable Manipulation Data Collection (2026)
+- Sim-to-Real Causal Transfer: A Metric Learning Approach to Causally-Aware Interaction Representations (2025)
+- EMMA: Generalizing Real-World Robot Manipulation via Generative Visual Transfer (2025)
 
-        ## Response
-        The paper no longer claims that generic world modeling, generic uncertainty, or larger datasets are novel. The defensible contribution is the combination of explicit unrealized physical branches, a tail-risk objective over those branches, diagnostic probing, and failure memory.
+        ## ICLR Main Response
+        A hostile ICLR reviewer would be correct to reject this as a main-conference submission. The v2 paper has reproducible synthetic evidence and careful limitations, but it does not contain the real robot, high-fidelity simulator, learned model, or manual related-work depth needed for the ICLR main track.
 
-        ## What Is Not Claimed
-        - No real-robot state of the art.
-        - No proof that the branch atlas can always discover the true hidden mode.
-        - No claim that advisor-name matches imply relevance.
+        ## Honest Action
+        The paper is marked `KILL_ARCHIVE`. This avoids converting a generated workshop-style idea into an overstated main-conference claim.
 
-        ## Remaining Reviewer Risk
-        A main-conference reviewer can still reject the work for synthetic-only evidence. The correct venue state is `WORKSHOP_ONLY` until hardware or high-fidelity simulation validation is added.
+        ## What Would Be Needed To Revive
+        - Real robot or high-fidelity benchmark experiments.
+        - Implemented model and baselines, not synthetic probability tables.
+        - Manual full-paper related-work audit.
+        - Paper-specific writing and figures.
+        - Evidence that the core mechanism is learned and useful under deployment shift.

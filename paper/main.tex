@@ -1,72 +1,45 @@
-        \documentclass{article}
-        \usepackage{iclr2026_conference,times}
-        \input{math_commands.tex}
-        \usepackage{hyperref}
-        \usepackage{url}
-        \usepackage{booktabs}
-        \title{Mechanism-Level Sim2Real Contracts: A Hardened Branch-Structured Diagnostic Study}
-        \author{Anonymous Authors}
-        \begin{document}
-        \maketitle
-        \begin{abstract}
-        We study sim-to-real transfer for robot manipulation. The submission-hardened claim is intentionally narrow: Transfer by preserving causal mechanisms rather than matching observation statistics. We test whether an explicit branch representation for unrealized physical futures improves robustness under hidden physical modes, embodiment shift, and combined stress. Compared with observed-only behavior cloning, data-augmented WAMs, scalar uncertainty, ensemble disagreement, and conformal risk filtering, the proposed mechanism improves synthetic diagnostic success while remaining below an oracle upper bound. Submission-hardening version: v2.
-        \end{abstract}
+\documentclass{article}
+\usepackage{iclr2026_conference,times}
+\input{math_commands.tex}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\title{Mechanism-Level Sim2Real Contracts: ICLR Main-Conference Gate Archive}
+\author{Anonymous Authors}
+\begin{document}
+\maketitle
+\begin{abstract}
+This document is not an ICLR main-conference submission. It is the v3 main-conference gate for a generated robotics draft about sim-to-real transfer for robot manipulation. The original research bet was: Transfer by preserving causal mechanisms rather than matching observation statistics. After a stricter hostile review, the honest terminal decision is \textbf{KILL/ARCHIVE}. Submission-hardening version: v3.
+\end{abstract}
 
-        \section{Problem and Reviewer Threat Model}
-        The generated draft made a plausible mechanism claim but was too easy to attack: it used one seed, weak baselines, no error bars, no ablations, and a broad novelty statement. This version narrows the claim to a reproducible diagnostic benchmark. The paper does not claim real-robot state of the art. It asks whether Mechanism level sim2real contracts should remain a candidate mechanism after hostile prior-work and empirical stress tests.
+\section{Gate Decision}
+The v2 paper was workshop-only. Under the active ICLR-main standard, that is insufficient. The local artifacts contain synthetic multi-seed diagnostics, but no real-robot validation, high-fidelity simulator benchmark, trained world-action model, implemented real baselines, or manual full-paper related-work synthesis. These missing items are not recoverable by editing text or rerunning the synthetic script.
 
-        \section{Hostile Prior Work and Novelty Boundary}
-        The closest hostile records include \citep{prior1,prior2,prior3,prior4,prior5,prior6}. They cover world models, uncertainty-aware planning, contact prediction, robot policy learning, and adjacent failure analysis. Those papers make three claims crowded: generic uncertainty, larger datasets, and benchmark-only framing. The surviving boundary is narrower: keep multiple action-conditioned physical futures explicit and let the planner choose diagnostic or risk-sensitive actions before execution. Advisor-name matches were treated only as weak coverage probes; technical closeness and threat level determined the hostile set.
+\section{Fatal ICLR-Main Blockers}
+\begin{itemize}
+\item Evidence is synthetic and generated from a shared batch template.
+\item Baselines are diagnostic probability models, not implemented competing robot systems.
+\item Ablations do not correspond to a trained model checkpoint.
+\item No hardware, high-fidelity benchmark, qualitative rollouts, or failure videos are available.
+\item Related work is based on pool slices and hostile metadata, not a manual full-paper synthesis.
+\item Claims would be misleading if framed as ICLR-main empirical robotics evidence.
+\end{itemize}
 
-        \section{Mechanism}
-        For state $s$ and candidate action $a$, the model predicts an observed next-state mean plus a branch atlas $B_\theta(s,a)=\{b_1,\ldots,b_K\}$ of plausible but unrealized physical outcomes. Planning uses
-        \[
-        J(a)=\mathbb{E}[L(s,a)] + \lambda\,\mathrm{CVaR}_\alpha(\{L(b_k,a)\}_k) + \eta\,D(a),
-        \]
-        where $D(a)$ rewards diagnostic actions that distinguish high-value branches. A failure memory stores corrected branch weights after execution. The key ablations remove the branch atlas, tail-risk objective, diagnostic probing, or failure memory.
+\section{Hostile Prior-Work Pressure}
+The closest local hostile records include:
+\begin{itemize}
+\item Robust Visual Sim-to-Real Transfer for Robotic Manipulation (2023)
+\item In-Hand Manipulation of Articulated Tools with Dexterous Robot Hands with Sim-to-Real Transfer (2025)
+\item Bi-Touch: Bimanual Tactile Manipulation with Sim-to-Real Deep Reinforcement Learning (2023)
+\item Zero-shot sim-to-real transfer of reinforcement learning framework for robotics manipulation with demonstration and force feedback (2023)
+\item SymBridge: Bilateral-Symmetry-Aware Vision-Language-Action Learning with Head-Mounted Display Teleoperation for Sim2Real Transfer in Bimanual Manipulation (n.d.)
+\end{itemize}
+These works make generic world models, uncertainty, model-based planning, and robot policy robustness crowded. Without real empirical evidence, the remaining novelty boundary is too weak for ICLR main.
 
-        \section{Evaluation Protocol}
-        The evidence is synthetic but stronger than the draft: seven random seeds, 600 episodes per seed, strong non-oracle baselines, an oracle branch upper bound, hidden-mode and embodiment-shift splits, a combined-stress split, ablations, stress sweeps, and negative cases. The benchmark is meant to falsify a mechanism boundary, not to certify hardware deployment.
+\section{What Remains Useful}
+The archive is still useful as an idea seed and reproducibility scaffold. The synthetic code, stress-test CSVs, reviewer attacks, and novelty-boundary docs can inform a future project. The correct next step is not more paper polishing; it is new evidence: implemented models, real baselines, manual related work, and robot or high-fidelity simulator validation.
 
-        \begin{center}
-        \begin{tabular}{lccc}
-\toprule
-Variant & Hidden shift & Embodiment shift & Combined stress \\
-\midrule
-Observed-only BC & 0.412 $\pm$ 0.012 & 0.456 $\pm$ 0.014 & 0.334 $\pm$ 0.011 \\
-Data-augmented WAM & 0.492 $\pm$ 0.018 & 0.530 $\pm$ 0.015 & 0.425 $\pm$ 0.011 \\
-Scalar uncertainty & 0.551 $\pm$ 0.016 & 0.576 $\pm$ 0.013 & 0.499 $\pm$ 0.013 \\
-Ensemble disagreement & 0.588 $\pm$ 0.016 & 0.627 $\pm$ 0.015 & 0.551 $\pm$ 0.019 \\
-Conformal risk filter & 0.622 $\pm$ 0.016 & 0.638 $\pm$ 0.014 & 0.574 $\pm$ 0.011 \\
-Proposed branch mechanism & 0.691 $\pm$ 0.013 & 0.710 $\pm$ 0.011 & 0.662 $\pm$ 0.012 \\
-Oracle branch upper bound & 0.762 $\pm$ 0.018 & 0.776 $\pm$ 0.009 & 0.743 $\pm$ 0.015 \\
-\bottomrule
-\end{tabular}
-        \end{center}
+\section{Terminal Action}
+Decision: \textbf{KILL/ARCHIVE for ICLR main}. Do not submit this paper to ICLR main in the current form. Revival requires a substantially new empirical project.
 
-        \begin{center}
-        \begin{tabular}{lrl}
-\toprule
-Ablation & Combined stress success & Removed component \\
-\midrule
-Full mechanism & 0.672 $\pm$ 0.010 & all components \\
-Minus branch atlas & 0.565 $\pm$ 0.013 & removes explicit unrealized futures \\
-Minus tail risk & 0.578 $\pm$ 0.015 & uses mean predicted value only \\
-Minus diagnostic probe & 0.610 $\pm$ 0.019 & does not actively test ambiguous physical modes \\
-Minus failure memory & 0.607 $\pm$ 0.020 & does not reuse repaired beliefs \\
-\bottomrule
-\end{tabular}
-        \end{center}
-
-        \section{Failure Cases and Limitations}
-        Negative cases remain: unmodeled hardware damage, semantic goal ambiguity, and adversarial sensor dropout all reduce success sharply. The mechanism is also vulnerable if the branch atlas omits the true physical mode. Therefore the honest readiness decision is workshop-only or strong-revise, not main-conference-ready without real hardware validation and a learned branch discovery module.
-
-        \section{Reproducibility}
-        Code is in \texttt{src/run\_experiment.py} and produces \texttt{results/metrics.csv}, \texttt{results/raw\_seed\_metrics.csv}, \texttt{results/ablation\_metrics.csv}, \texttt{results/stress\_sweep.csv}, and \texttt{results/negative\_cases.csv}. The canonical PDF is \texttt{C:/Users/wangz/Downloads/67.pdf}. No versioned PDFs are kept in Downloads.
-
-        \section{Conclusion}
-        Mechanism-Level Sim2Real Contracts is submission-hardened as a narrow diagnostic study. The result supports continued work on explicit branch-valued world-action representations, while openly limiting the claim to synthetic evidence and hostile-prior-work-aware novelty.
-
-        \bibliographystyle{iclr2026_conference}
-        \bibliography{references}
-        \end{document}
+\end{document}
